@@ -4,9 +4,13 @@
   <div class="wrapper">
     <main class="form-signin w-100 m-auto">
       <div class="login-container">
-        <form class="login-form">
-          <h2>Login</h2>
+   
+
+
+        <form action="/auth/admin_login" method="post" class="login-form">
+          <h2>Register</h2>
           <hr>
+
           <div class="input-container mt-4">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required />
@@ -15,8 +19,15 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required />
           </div>
-          <button type="submit">Login</button>
+          <div class="input-container">
+            <label for="password">Confirm Password</label>
+            <input type="password" id="password" name="confirmPassword" required />
+          </div>
+          <button type="submit">Register</button>
         </form>
+        <% if (message) { %>
+          <p class="alert alert-danger mt-3 p-2"><%= message %></p>
+      <% } %>
       </div>
     </main>
   </div>

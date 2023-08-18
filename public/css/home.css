@@ -1,0 +1,13 @@
+body, html{
+    height:100%;
+}
+.wrapper{
+    background:url('/images/Time-Tracking-Software-Hacks.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 89%;
+}
+.arroww{
+    font-size: 90px;
+}

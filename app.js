@@ -5,29 +5,13 @@ const mysql = require('mysql');
 const dotenv = require('dotenv');
 const path = require('path');
 const session = require('express-session');
+const db = require('./controllers/connection');
 
-// for our sensitive files 
-dotenv.config({ path: './.env'})
+
 
 const app = express();
 
-// database connection
 
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-})
-
-db.connect(function(error){
-    if (error){
-        throw error;
-    }
-    else{
-        console.log("Connected Succesfully");
-    }
-});
 
 // for viewing our pages, we set the view engine to ejs
 app.set('view engine', 'ejs');

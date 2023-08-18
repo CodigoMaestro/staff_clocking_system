@@ -1,0 +1,41 @@
+<%- include("partial/header_dash") -%>
+
+    <div class="container-fluid">
+        <div class="row">
+            <%- include("partial/sidebar") -%>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">View Staff</h1>
+                </div>
+
+                <table class="table">
+                    <thead class="table-dark">
+                      <th>S/N</th>
+                      <th>Staff ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                    </thead>
+                    <tbody>
+                     <% staffData.forEach((staff, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= staff.staff_id %></td>
+                            <td><%= staff.firstname %></td>
+                            <td><%= staff.lastname %></td>
+                            <td><%= staff.email %></td>
+                            <td><%= staff.phone %></td>
+                        </tr>
+                     <% }); %>
+                    </tbody>
+                  </table>
+                
+            </main>
+
+        </div>
+    </div>
+
+    <%- include("partial/footer") -%>

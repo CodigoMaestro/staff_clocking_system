@@ -1,1 +1,84 @@
+<%- include("partial/header_home") -%>
+<div
+  class="conatainer-fluid wrapper d-flex justify-content-center align-items-center"
+>
+  <!-- Button trigger modal -->
 
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="row">
+      <div class="col-12">
+        <i
+          class="fa-solid fa-right-to-bracket fa-rotate-90 d-flex justify-content-center mb-4 arroww text-danger"
+        ></i>
+      </div>
+      <div class="col-12">
+        <div class="d-grid gap-2 bg-dark p-5">
+          <button
+            type="button"
+            class="btn btn-primary btn-block fs-1"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Log In
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Log In Details
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <form action="/auth/home" method="post">
+                <div class="mb-3">
+                    <label for="Staff_ID" class="form-label">Staff ID:</label>
+                    <input type="text" class="form-control" name="user" />
+                  </div>
+        
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Enter Password:</label>
+                    <input type="password" class="form-control" name="password" />
+                  </div>
+        
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                  </div>
+            </form>
+          
+        </div>
+        <div class="modal-footer d-flex justify-content-start">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partial/footer") -%>

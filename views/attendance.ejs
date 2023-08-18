@@ -1,0 +1,90 @@
+<%- include("partial/header_home") -%>
+
+    <div class="container mt-5">
+        <h2>Clock In or Out</h2>
+        <div class="row">
+            <div class="col">
+                <div id="countdown">Time remaining: 30 seconds</div>
+                <form action="/auth/attendance" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Select Action:</label>
+        
+                        <div class="input-container mt-4">
+                            <label for="username">Staff_ID</label>
+                            <input type="text" id="Staff_ID" name="staff_id" required />
+                        </div>
+        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="action" id="clockIn" value="clockIn" />
+                            <label class="form-check-label" for="clockIn">Clock In</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="action" id="clockOut" value="clockOut" />
+                            <label class="form-check-label" for="clockOut">Clock Out</label>
+                        </div>
+        
+                        <div class="input-container mt-4">
+                            <label for="totpCode">TOTP Code</label>
+                            <input type="text" id="totpCode" name="totpCode" required />
+                        </div>
+        
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        
+                <% if (message) { %>
+                    <p class="alert alert-danger mt-3 p-2"><%= message %></p>
+                <% } %>
+            </div>
+
+            <div class="col">
+                <div class="qr-code-container">
+                    <p>
+                        Scan the QR code below with your Google Authenticator app to set up
+                        TOTP:
+                    </p>
+
+                    <% if (typeof qrCodeUrl == 'undefined'){ %>
+                        <p>No qrCode generated</p>
+                   <% } else if (qrCodeUrl){ %>
+                        <img src="<%= qrCodeUrl %>" alt="QR Code" />
+                   <% } %>
+
+                    <!-- <j% if (qrCodeUrl){ %j>
+                        <img src="<k%= qrCodeUrl %k>" alt="QR Code" />
+                    <k% } %k> -->
+                    
+
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        let remainingTime = localStorage.getItem('remainingTime') || 30; // Retrieve from localStorage or set default value
+    
+        function updateCountdown() {
+            countdownElement.textContent = `Time remaining: ${remainingTime} seconds`;
+            remainingTime -= 1;
+    
+            if (remainingTime >= 0) {
+                setTimeout(updateCountdown, 1000);
+                // Store the updated timer value in localStorage
+                localStorage.setItem('remainingTime', remainingTime);
+            } else {
+                countdownElement.textContent = 'Time expired';
+                // Clear the timer value from localStorage
+                localStorage.removeItem('remainingTime');
+            }
+        }
+    
+        // Start the countdown
+        updateCountdown();
+    </script>
+      
+    <%- include("partial/footer") -%>

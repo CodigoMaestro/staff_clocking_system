@@ -1,0 +1,68 @@
+<%- include("partial/header_dash") -%>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include("partial/sidebar") -%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+      >
+        <h1 class="h2">Create Staff Login Details</h1>
+      </div>
+
+      <div class="create_staff_wrapper mt-5">
+        <div class="container-fluid w-75 m-auto">
+          <div class="row">
+            <div class="col-6">
+              <form action="/auth/staff_login" method="post" class="row g-3">
+                <div class="col-6">
+                  <label for="staff_id" class="form-label">Staff ID</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="staff_id"
+                    name="staff"
+                    required
+                  />
+                </div>
+
+                <div
+                  class="col-6 d-flex justify-content-start align-items-end mt-3"
+                >
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </form>
+
+              <% if (message){ %>
+                <p class="alert alert-danger mt-3 p-2"><%= message %></p>
+              <% } %>
+
+            </div>
+            <div class="col-6 border-start border-primary border-3">
+              <h2>Staff Login Details</h2>
+
+              <hr class="my-3">
+              <% if (typeof generatedUsername == 'undefined' && typeof generatedPassword == 'undefined') { %>
+                <p>No login details generated yet.</p>
+            <% } else if (generatedUsername && generatedPassword) { %>
+                <p><b>Staff Username: </b><%= generatedUsername %></p>
+                <p><b>Staff Password: </b><%= generatedPassword %></p>
+            <% } %>
+            
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+    </div>
+
+
+    </main>
+  </div>
+</div>
+
+<%- include("partial/footer") -%>

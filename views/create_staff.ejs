@@ -1,0 +1,49 @@
+<%- include("partial/header_dash") -%>
+
+    <div class="container-fluid">
+        <div class="row">
+            <%- include("partial/sidebar") -%>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Create Staff</h1>
+                </div>
+
+                <div class="create_staff_wrapper w-75 m-auto mt-5">
+
+                    <form action="/auth/create_staff" method="post" class="row g-3">
+                        <div class="col-md-6">
+                          <label for="firstname" class="form-label">Firs Name</label>
+                          <input type="text" class="form-control" id="firstname" name="first_name" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="lastname" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="lastname" name="last_name" required>
+                        </div>
+                        <div class="col-12">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="col-12">
+                          <label for="phone" class="form-label">Phone Number</label>
+                          <input type="text" class="form-control" id="phone" name="phone" required>
+                        </div>
+                       
+                        <div class="col-12">
+                          <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                      </form>
+    
+                      <% if (message){ %>
+                        <p class="alert alert-danger mt-3 p-2"><%= message %></p>
+                      <% } %>
+                </div>
+
+                
+            </main>
+
+        </div>
+    </div>
+
+    <%- include("partial/footer") -%>

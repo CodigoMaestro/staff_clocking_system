@@ -1,0 +1,14 @@
+<%- include("partial/header_home") -%>
+
+<!-- attendance.ejs -->
+<form action="/auth/validate" method="post" class="verify-form">
+    <input type="hidden" name="staff_id" value="<%= staff_id %>">
+    <input type="hidden" name="action" value="<%= action %>">
+    <div class="form-group">
+        <label for="enteredTOTP">Enter TOTP:</label>
+        <input type="text" id="enteredTOTP" name="enteredTOTP" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Verify and Record</button>
+</form>
+
+<%- include("partial/footer") -%>
